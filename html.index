@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আয়েশা, তোমাকে মিস করি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at center, #2a0033, #0f001a);
+            color: #ffe6f0;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .neon-pink {
+            text-shadow: 0 0 15px #ff4d94, 0 0 30px #ff4d94, 0 0 50px #c026d3;
+        }
+
+        .floating-item {
+            position: absolute;
+            z-index: 30; /* স্লাইডের উপরে উড়বে */
+            pointer-events: none;
+            user-select: none;
+            animation: floatUp linear infinite;
+        }
+
+        .heart {
+            font-size: 32px;
+            filter: drop-shadow(0 0 15px #ff4d94);
+        }
+
+        .name-float {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 0 10px #ff4d94;
+            background: rgba(0,0,0,0.4);
+            padding: 2px 8px;
+            border-radius: 9999px;
+            white-space: nowrap;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0.9; }
+            100% { transform: translateY(-150px) rotate(380deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Background -->
+    <div id="stars" class="fixed inset-0 z-0"></div>
+    <div id="floating-container" class="fixed inset-0 z-30 pointer-events-none"></div>
+
+    <div class="relative z-20 min-h-screen flex items-center justify-center p-6">
+        <div class="max-w-3xl w-full">
+
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 bg-white/10 px-6 py-2 rounded-full border border-pink-400/30">
+                    <span class="text-pink-400">❤️</span>
+                    <span class="font-light tracking-widest">RONI & AYEsHA</span>
+                </div>
+            </div>
+
+            <!-- Slides -->
+            <div id="slides" class="flex overflow-x-auto snap-x snap-mandatory gap-8 scrollbar-hide rounded-3xl">
+                
+                <!-- Slide 1 -->
+                <div class="slide glass rounded-3xl p-12 md:p-20 text-center min-h-[75vh] flex flex-col justify-center">
+                    <h1 class="text-6xl md:text-7xl font-bold neon-pink mb-6">আয়েশা</h1>
+                    <p class="text-3xl text-pink-200">আমি তোমাকে খুব মিস করছি...</p>
+                    <div class="my-12 text-8xl">❤️</div>
+                    <p class="text-xl">— তোমার রনি</p>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide glass rounded-3xl p-10 md:p-16 min-h-[75vh]">
+                    <h2 class="text-4xl font-light mb-10">প্রিয় আয়েশা ❤️</h2>
+                    <div class="space-y-8 text-lg leading-relaxed">
+                        <p>তোমাকে ছাড়া প্রতিটা মুহূর্ত অসম্পূর্ণ লাগে। তোমার হাসি, তোমার চোখ, তোমার আদর — সবকিছু আমার হৃদয়ে গেঁথে আছে।</p>
+                        <p>রনি তোমাকে খুব মিস করে, আয়েশা।</p>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="slide glass rounded-3xl p-10 md:p-16 min-h-[75vh]">
+                    <h2 class="text-3xl mb-8">কেন তোমাকে মিস করি?</h2>
+                    <div class="space-y-6">
+                        <div class="glass p-6 rounded-2xl">তোমার হাসিতে আমার দুনিয়া আলো হয়</div>
+                        <div class="glass p-6 rounded-2xl">তোমার কাছে থাকলে আমি পূর্ণ হয়ে যাই</div>
+                        <div class="glass p-6 rounded-2xl">তুমি আমার শান্তি ও ভালোবাসা</div>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="slide glass rounded-3xl p-12 md:p-20 text-center min-h-[75vh] flex flex-col justify-center">
+                    <p class="text-5xl leading-tight neon-pink mb-8">শীঘ্রই ফিরে এসো আয়েশা</p>
+                    <p class="text-2xl">আমি অপেক্ষায় আছি তোমার জন্য</p>
+                    <div class="mt-12 text-7xl">💕</div>
+                    <p class="mt-8">চিরকাল তোমার — রনি</p>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex items-center justify-center gap-8 mt-10">
+                <button onclick="prevSlide()" class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-3xl hover:scale-110 transition-all">←</button>
+                <div id="dots" class="flex gap-4"></div>
+                <button onclick="nextSlide()" class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-3xl hover:scale-110 transition-all">→</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Button -->
+    <button onclick="toggleMusic()" class="fixed bottom-8 right-8 w-14 h-14 glass rounded-2xl flex items-center justify-center text-2xl z-50">
+        ♫
+    </button>
+
+    <audio id="bgMusic" loop>
+        <source src="https://assets.mixkit.co/sfx/preview/296/296-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let current = 0;
+        const total = 4;
+        const slidesContainer = document.getElementById('slides');
+
+        function createDots() {
+            const container = document.getElementById('dots');
+            container.innerHTML = '';
+            for (let i = 0; i < total; i++) {
+                const dot = document.createElement('div');
+                dot.className = `w-4 h-4 rounded-full transition-all cursor-pointer ${i === 0 ? 'bg-pink-400 scale-125' : 'bg-white/30'}`;
+                dot.onclick = () => goTo(i);
+                container.appendChild(dot);
+            }
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('#dots > div');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('bg-pink-400', i === current);
+                dot.classList.toggle('scale-125', i === current);
+            });
+        }
+
+        function goTo(n) {
+            current = n;
+            slidesContainer.scrollTo({ left: current * slidesContainer.offsetWidth, behavior: 'smooth' });
+            updateDots();
+        }
+
+        function nextSlide() { current = (current + 1) % total; goTo(current); }
+        function prevSlide() { current = (current - 1 + total) % total; goTo(current); }
+
+        // উন্নত ফ্লোটিং আইটেম (হার্ট + নাম)
+        function createFloatingItem() {
+            const container = document.getElementById('floating-container');
+            const item = document.createElement('div');
+            item.className = "floating-item flex flex-col items-center";
+
+            const isName = Math.random() > 0.6;
+            
+            if (isName) {
+                const names = ["আয়েশা", "রনি", "আয়েশা ❤️", "রনি & আয়েশা"];
+                item.innerHTML = `
+                    <div class="heart">❤️</div>
+                    <div class="name-float mt-1">${names[Math.floor(Math.random()*names.length)]}</div>
+                `;
+                item.style.fontSize = '28px';
+            } else {
+                item.innerHTML = `<div class="heart">❤️</div>`;
+                item.style.fontSize = (28 + Math.random() * 18) + 'px';
+            }
+
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.animationDuration = (11 + Math.random() * 14) + 's';
+            item.style.opacity = 0.75 + Math.random() * 0.25;
+
+            container.appendChild(item);
+
+            setTimeout(() => item.remove(), 30000);
+        }
+
+        function createStars() {
+            const container = document.getElementById('stars');
+            for (let i = 0; i < 200; i++) {
+                const s = document.createElement('div');
+                s.style.position = 'absolute';
+                s.style.left = Math.random() * 100 + '%';
+                s.style.top = Math.random() * 100 + '%';
+                s.style.width = s.style.height = (Math.random() * 3 + 1) + 'px';
+                s.style.background = 'white';
+                s.style.borderRadius = '50%';
+                s.style.opacity = Math.random() * 0.7 + 0.3;
+                container.appendChild(s);
+            }
+        }
+
+        // Music
+        let playing = false;
+        const audio = document.getElementById('bgMusic');
+        function toggleMusic() {
+            playing ? audio.pause() : audio.play();
+            playing = !playing;
+        }
+
+        // Initialize
+        window.onload = () => {
+            createStars();
+            createDots();
+            updateDots();
+
+            // নিয়মিত ফ্লোটিং আইটেম
+            setInterval(() => {
+                if (Math.random() > 0.35) createFloatingItem();
+            }, 450);
+
+            // প্রথমে অনেকগুলো দেখানো
+            for (let i = 0; i < 25; i++) {
+                setTimeout(createFloatingItem, i * 80);
+            }
+        };
+    </script>
+</body>
+</html>
