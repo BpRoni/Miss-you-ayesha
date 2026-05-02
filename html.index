@@ -127,7 +127,7 @@
     </button>
 
     <audio id="bgMusic" loop>
-        <source src="https://assets.mixkit.co/sfx/preview/296/296-preview.mp3" type="audio/mpeg">
+        <source src="sanam re.mp3" type="audio/mpeg">
     </audio>
 
     <script>
